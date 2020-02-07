@@ -21,9 +21,9 @@ var view = {
 
 	},
 
-	displayMiss: function(locations){
+	displayMiss: function(location){
 
-		var miss = document.getElementById(locations);
+		var miss = document.getElementById(location);
 		miss.setAttribute('class', 'miss');
 		// miss.setAttribute('disabled', 'enable');
 		// var missYou = miss.getAttribute("disabled");
