@@ -69,7 +69,7 @@ var model = {
 				view.displayMessage('Попали!!');
 				this.guesses++;
 				document.getElementById(ship.locations[index]).style.boxShadow = "10px 10px 70px red";
-			
+
 
 				ship.hits[index] = 'hit';
 				console.log(model.guesses);
@@ -95,9 +95,29 @@ var model = {
 						view.displayMessage('Вы потопили ' +this.numShips + ' корабля за: ' + this.guesses + ' выстрелов!');
 						
 						setTimeout(function(){
-							confirm('Поздравляю с победой!!! Ура! Еще будем играть?');
-							window.location.reload();
+							var tor = confirm('Поздравляю с победой!!! Ура! Еще будем играть?');
+
+							if (tor){
+								window.location.reload(tor);
+
+							}else{
+								// return null;
+								// $('#board').addClass('active');
+								
+								 var elem = document.querySelector('#tableID');
+								 console.log(elem.classList);
+								 elem.classList.add('active');
+								 console.log(elem.classList);
+
+							// 	var sup1 = document.getElementById(guess);
+
+							// 	sup1.setAttribute('pointer-events', 'none');
+							}
+
 						}, 1000);
+
+						
+
 						
 
 					}

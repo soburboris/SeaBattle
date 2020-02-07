@@ -69,3 +69,7 @@ form input{
 	/*pointer-events: none;*/
 
 }
+.active {
+	pointer-events: none;
+
+}
