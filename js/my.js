@@ -187,7 +187,7 @@ var model = {
 		var direction = Math.floor(Math.random() * 2);
 		var row, col;
 
-		if (direction === 1){// horizonal
+		if (direction == 1){// horizonal
 			row = Math.floor(Math.random()  * this.boardSize);
 			col = Math.floor(Math.random()  * (this.boardSize - this.shipLength + 1));
 
@@ -199,7 +199,7 @@ var model = {
 
 		var newShipLocations = [];
 		for (var i = 0; i < this.shipLength; i++){
-			if ( direction === 1) {
+			if ( direction == 1) {
 				newShipLocations.push(row + '' + (col+i));
 			} else {
 				newShipLocations.push(col + '' + (row+i));
