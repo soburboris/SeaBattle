@@ -72,8 +72,8 @@ var model = {
 
 
 				ship.hits[index] = 'hit';
-				console.log(model.guesses);
-				console.log(ship.locations[0]);
+				// console.log(model.guesses);
+				// console.log(ship.locations[0]);
 
 
 
@@ -101,20 +101,16 @@ var model = {
 								window.location.reload(tor);
 
 							}else{
-								// return null;
-								// $('#board').addClass('active');
 								
-								 var elem = document.querySelector('#tableID');
-								 console.log(elem.classList);
-								 elem.classList.add('active');
-								 console.log(elem.classList);
+								
+								var elem = document.querySelector('#tableID');
+								
+								elem.classList.add('active');
+								
 
-							// 	var sup1 = document.getElementById(guess);
+						}
 
-							// 	sup1.setAttribute('pointer-events', 'none');
-							}
-
-						}, 1000);
+					}, 1000);
 
 						
 
@@ -122,7 +118,6 @@ var model = {
 
 					}
 					
-					// view.displayMessage('Вы потопили ' + model.numShips + ' корабля за: ' + this.guesses + ' выстрелов!');
 					
 
 				}
@@ -134,7 +129,6 @@ var model = {
 
 
 		}
-		// return null;
 		
 		
 		
@@ -193,7 +187,7 @@ var model = {
 		var direction = Math.floor(Math.random() * 2);
 		var row, col;
 
-		if (direction == 1){// horizonal
+		if (direction === 1){// horizonal
 			row = Math.floor(Math.random()  * this.boardSize);
 			col = Math.floor(Math.random()  * (this.boardSize - this.shipLength + 1));
 
@@ -212,7 +206,9 @@ var model = {
 
 			}
 		}
+		console.log(direction);
 		return newShipLocations;
+
 
 	},
 
@@ -232,6 +228,7 @@ var model = {
 
 
 	}
+
 
 
 	
@@ -314,9 +311,6 @@ if (table != null) {
 
 
 	function init(){
-		
-
-
 
 
 		// Поработаем с Enter
@@ -350,8 +344,10 @@ if (table != null) {
 
 
 
-	window.onload =init;
-	console.log(model.guesses);
+
+window.onload =init;
+
+
 
 
 

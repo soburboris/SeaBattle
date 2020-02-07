@@ -7,9 +7,14 @@ body {
 	padding: 0;
 	letter-spacing: 0;
 
+
+
 }
 div#board {
 	position: relative;
+	/*height: 100vh;  фолбэк для браузеров, которые не поддерживают пользовательские свойства 
+	height: calc(var(--vh, 1vh) * 100);
+	*/
 	
 	width: 1024px;
 	height: 863px;
@@ -18,7 +23,6 @@ div#board {
 	
 
 	margin: 0px auto;
-	
 	
 }
 div#messageArea{
@@ -58,7 +62,7 @@ form input{
 
 .hit {
 	background:  url("../img/ship.png") no-repeat center center;
-	/*pointer-events: none;*/
+	
 	
 
 
@@ -66,10 +70,11 @@ form input{
 }
 .miss {
 	background: url("../img/miss.png") no-repeat center center;
-	/*pointer-events: none;*/
+
 
 }
 .active {
 	pointer-events: none;
 
 }
+
