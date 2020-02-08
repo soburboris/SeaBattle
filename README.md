@@ -1,2 +1,2 @@
-# SeaBattle
- Game
+# SeaBattle!
+ 
