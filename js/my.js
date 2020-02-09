@@ -266,7 +266,7 @@ function parceGuess(guess){// Проверяем правильность вво
 	if (guess === null || guess.length !==2){
 		alert('Вы ввели неверные координаты!');
 	}else {
-		firstChar = guess.charAt(0);// извлекаем из строки первый символ
+		var firstChar = guess.charAt(0);// извлекаем из строки первый символ
 		var row = alphabet.indexOf(firstChar);
 		var column =guess.charAt(1);
 		// alert(row);
@@ -316,8 +316,10 @@ if (table != null) {
 		// Поработаем с Enter
 		var guessInput = document.getElementById('guessInput');
 		guessInput.onkeypress = handleKeyPress;
-		var fireButton;
 
+
+
+		var fireButton = document.getElementById("fireButton");
 
 		fireButton.onclick = function(guess){
 			var text =document.getElementsByTagName("input")[0];
