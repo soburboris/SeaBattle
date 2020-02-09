@@ -320,8 +320,8 @@ if (table != null) {
 
 		fireButton.onclick = function(guess){
 			var text =document.getElementsByTagName("input")[0];
-			var guess = text.value;
-			controller.processGuesses(guess);
+			var guessfire = text.value;
+			controller.processGuesses(guessfire);
 			text.value = '';
 
 
