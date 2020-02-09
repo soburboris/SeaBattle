@@ -316,6 +316,7 @@ if (table != null) {
 		// Поработаем с Enter
 		var guessInput = document.getElementById('guessInput');
 		guessInput.onkeypress = handleKeyPress;
+		var fireButton;
 
 
 		fireButton.onclick = function(guess){
