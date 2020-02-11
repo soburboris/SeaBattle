@@ -35,20 +35,19 @@ var view = {
 };
 
 // Модель поведения игры!
-var model = {
-	boardSize: 7,
-	numShips: 3,
-	shipLength: 3,
-	shipSunk: 0,
-	guesses: 0,
-	miss: 0,
+
+	var model = {
+		boardSize: 7,
+		numShips: 5,
+		shipLength: 3,
+		shipSunk: 0,
+		guesses: 0,
+		miss: 0,
 
 
-	ships: [
-	{ locations: ['0', '0', '0'], hits: ['', '', '']},
-	{ locations: ['0', '0', '0'], hits: ['', '', '']},
-	{ locations: ['0', '0', '0'], hits: ['', '', '']}
-	],
+		ships: [],
+
+
 
 
 	fire: function(guess){// получаем координаты выстрела
@@ -57,6 +56,7 @@ var model = {
 		for(var i=0; i < this.numShips; i++){
 			var ship = this.ships[i];
 			var index = ship.locations.indexOf(guess);
+
 
 			if (ship.hits[index] === "hit"){
 				view.displayMessage('Вы уж попадали в это место!');
@@ -171,6 +171,17 @@ var model = {
 	//Генерация кораблей на игровом поле
 
 	generateShipLocations: function(){
+		for (i = 0; i < this.numShips; i++){
+
+			this.ships[i] = {locations: ['', '', ''] , hits: ['', '', ''] }
+			// this.ships[i] = {hits: ['', '', '']}
+
+		}
+		console.log(this.ships);
+
+
+		
+
 		var locations;
 		for (var i = 0; i < this.numShips; i++){
 			do {
@@ -178,8 +189,9 @@ var model = {
 			} while (this.collision(locations));
 			this.ships[i].locations = locations;
 
-		}
-		// console.log(this.ships);
+
+		}	
+		console.log(this.ships);
 
 	},
 	// Метод создает корабль
@@ -189,11 +201,11 @@ var model = {
 
 		if (direction == 1){// horizonal
 			row = Math.floor(Math.random()  * this.boardSize);
-			col = Math.floor(Math.random()  * (this.boardSize - this.shipLength + 1));
+			col = Math.floor(Math.random()  * (this.boardSize - (this.shipLength + 1)));
 
 		}else {//Vertical
-			col = Math.floor(Math.random()  * this.boardSize);
-			row = Math.floor(Math.random()  * (this.boardSize - this.shipLength +1));
+			row = Math.floor(Math.random()  * this.boardSize);
+			col = Math.floor(Math.random()  * (this.boardSize - (this.shipLength + 1)));
 
 		}
 
@@ -202,38 +214,20 @@ var model = {
 
 			if ( direction == 1) {
 				newShipLocations.push(row + '' + (col+i));
-				// console.log(row);
-				// console.log(col+i);
-				// console.log(newShipLocations);
 
 			} else {
 				newShipLocations.push((col+i) + '' + (row));
-				// console.log(col);
-				// console.log(row+i);
-				// console.log(newShipLocations);
-
-				
+		
 
 			}
 
 		}
-		
-
-				console.log(newShipLocations);
-
-				
-
-			
-		
 
 
+		return newShipLocations;
 
 
-	
-	return newShipLocations;
-
-
-},
+	},
 
 	//  метод получает один корабль и проверяет, что тот не перекрывает другие корабли var index = ship.location.indexOf(guess);
 
@@ -243,7 +237,7 @@ var model = {
 			var ship = this.ships[i];
 			for ( var j = 0; j < locations.length; j++) {
 				if (ship.locations.indexOf(locations[j]) >=0) {
-					console.log(ship.locations);
+					console.log(ship.locations.indexOf(locations));
 					return true;
 				}
 			}
@@ -354,6 +348,7 @@ if (table != null) {
 
 
 		}
+
 		model.generateShipLocations();
 
 
