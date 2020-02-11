@@ -171,10 +171,9 @@ var view = {
 	//Генерация кораблей на игровом поле
 
 	generateShipLocations: function(){
-		for (i = 0; i < this.numShips; i++){
+		for (i = 0; i < this.numShips; i++){ // Создаем массив
 
 			this.ships[i] = {locations: ['', '', ''] , hits: ['', '', ''] }
-			// this.ships[i] = {hits: ['', '', '']}
 
 		}
 		console.log(this.ships);
