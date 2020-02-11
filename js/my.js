@@ -108,9 +108,9 @@ var model = {
 								elem.classList.add('active');
 								
 
-						}
+							}
 
-					}, 1000);
+						}, 1000);
 
 						
 
@@ -137,7 +137,7 @@ var model = {
 		var sup = document.getElementById(guess);
 
 		var altText = sup.getAttribute("disabled");
-		console.log(altText);
+		// console.log(altText);
 
 		if (altText !== 'disabled'){
 
@@ -179,7 +179,7 @@ var model = {
 			this.ships[i].locations = locations;
 
 		}
-		console.log(this.ships);
+		// console.log(this.ships);
 
 	},
 	// Метод создает корабль
@@ -193,24 +193,47 @@ var model = {
 
 		}else {//Vertical
 			col = Math.floor(Math.random()  * this.boardSize);
-			row = Math.floor(Math.random()  * (this.boardSize - this.shipLength + 1));
+			row = Math.floor(Math.random()  * (this.boardSize - this.shipLength +1));
 
 		}
 
 		var newShipLocations = [];
-		for (var i = 0; i < this.shipLength; i++){
+		for ( i= 0; i < this.shipLength; i++) {
+
 			if ( direction == 1) {
 				newShipLocations.push(row + '' + (col+i));
+				// console.log(row);
+				// console.log(col+i);
+				// console.log(newShipLocations);
+
 			} else {
-				newShipLocations.push(col + '' + (row+i));
+				newShipLocations.push((col+i) + '' + (row));
+				// console.log(col);
+				// console.log(row+i);
+				// console.log(newShipLocations);
+
+				
 
 			}
+
 		}
-		console.log(direction);
-		return newShipLocations;
+		
+
+				console.log(newShipLocations);
+
+				
+
+			
+		
 
 
-	},
+
+
+	
+	return newShipLocations;
+
+
+},
 
 	//  метод получает один корабль и проверяет, что тот не перекрывает другие корабли var index = ship.location.indexOf(guess);
 
@@ -220,6 +243,7 @@ var model = {
 			var ship = this.ships[i];
 			for ( var j = 0; j < locations.length; j++) {
 				if (ship.locations.indexOf(locations[j]) >=0) {
+					console.log(ship.locations);
 					return true;
 				}
 			}
@@ -300,7 +324,7 @@ if (table != null) {
 	function tableText(guess) {
 
 		model.fire(guess.id);
-		console.log(guess);
+		// console.log(guess);
 
 		return false;
 
@@ -348,7 +372,7 @@ if (table != null) {
 
 
 
-window.onload =init;
+	window.onload =init;
 
 
 
