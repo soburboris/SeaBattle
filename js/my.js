@@ -36,16 +36,16 @@ var view = {
 
 // Модель поведения игры!
 
-	var model = {
-		boardSize: 7,
-		numShips: 5,
-		shipLength: 3,
-		shipSunk: 0,
-		guesses: 0,
-		miss: 0,
+var model = {
+	boardSize: 7,
+	numShips: 5,
+	shipLength: 3,
+	shipSunk: 0,
+	guesses: 0,
+	miss: 0,
 
 
-		ships: [],
+	ships: [],
 
 
 
@@ -68,23 +68,71 @@ var view = {
 				view.displayHit(guess);
 				view.displayMessage('Попали!!');
 				this.guesses++;
-				document.getElementById(ship.locations[index]).style.boxShadow = "10px 10px 70px red";
+				
+				// document.getElementById(ship.locations[index]).style.border-collapse= "collapse";
+				
 
 
 				ship.hits[index] = 'hit';
+
 				// console.log(model.guesses);
 				// console.log(ship.locations[0]);
 
 
 
 				if (this.isSunk(ship)){
+					var el = document.getElementById(ship.locations[0]);
+
+					el.classList.add('self');
+
+					var row1 = document.getElementById(ship.locations[0]).id.charAt(0);
+					var column1 = document.getElementById(ship.locations[0]).id.charAt(1);
+
+					var row2 = document.getElementById(ship.locations[1]).id.charAt(0);
+					var column2 = document.getElementById(ship.locations[1]).id.charAt(1);
+
+					var row3 = document.getElementById(ship.locations[2]).id.charAt(0);
+					var column3 = document.getElementById(ship.locations[2]).id.charAt(1);
+
+
+					// console.log(+row1);
+					// console.log(+column1);
+
+
+					// console.log(+row2);
+					// console.log(+column2);
+
+
+					// console.log(+row3);
+					// console.log(+column3);
+
+					if (row1 == row2 && row1 == row3 && row2 == row3){
+						document.getElementById(ship.locations[0]).colSpan="3" ;
+						document.getElementById(ship.locations[1]).style.display= "none";
+						document.getElementById(ship.locations[2]).style.display= "none";
+					}else if (column1 == column2 && column1 == column3 && column2 == column3){
+						document.getElementById(ship.locations[0]).rowSpan="3" ;
+						document.getElementById(ship.locations[1]).style.display= "none";
+						document.getElementById(ship.locations[2]).style.display= "none";
+
+
+					}else{
+						
+
+					}
+					
+
+					// var firstChar = guess.charAt(0);// извлекаем из строки первый символ
+					// var row = alphabet.indexOf(firstChar);
+					// var column =guess.charAt(1);
+					
 					
 
 					
 					// console.log(altText);
-					// document.getElementById(ship.locations[0]).style.boxShadow = "10px 10px 70px red";
-					// document.getElementById(ship.locations[1]).style.boxShadow = "10px 10px 70px red";
-					// document.getElementById(ship.locations[2]).style.boxShadow = "10px 10px 70px red";
+					document.getElementById(ship.locations[0]).style.boxShadow = "10px 10px 70px red";
+					document.getElementById(ship.locations[1]).style.boxShadow = "10px 10px 70px red";
+					document.getElementById(ship.locations[2]).style.boxShadow = "10px 10px 70px red";
 
 
 					
@@ -173,7 +221,7 @@ var view = {
 	generateShipLocations: function(){
 		for (i = 0; i < this.numShips; i++){ // Создаем массив
 
-			this.ships[i] = {locations: ['', '', ''] , hits: ['', '', ''] }
+			this.ships[i] = {locations: ['', '', ''], hits: ['', '', ''] }
 
 		}
 		console.log(this.ships);
@@ -216,7 +264,7 @@ var view = {
 
 			} else {
 				newShipLocations.push((col+i) + '' + (row));
-		
+
 
 			}
 
@@ -267,7 +315,7 @@ var controller = {
 		var location = parceGuess(guess);
 		if (location) {
 			
-			console.log(model.guesses);
+			// console.log(model.guesses);
 			var hit = model.fire(location);
 			if (hit && model.shipSunk === model.numShips){
 				view.displayMessage('Вы потопили ' + model.numShips + ' корабля за: ' + model.guesses + ' выстрелов!');

@@ -77,4 +77,9 @@ form input{
 	pointer-events: none;
 
 }
+.self {
+	border: 1px solid red;  
+    border-collapse: collapse;  Отображать только одинарные линии 
+
+}
 
