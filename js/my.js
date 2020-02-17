@@ -161,26 +161,13 @@ var model = {
 						}, 1000);
 
 
-
-
-
 					}
-
-
 
 				}
 				return true;
 
 			}
-
-
-
-
 		}
-
-
-
-
 
 		var sup = document.getElementById(guess);
 
@@ -204,8 +191,6 @@ var model = {
 
 	},
 
-
-
 	isSunk: function (ship) { // Проверяем, потоплены ли все палубы
 
 		for (var i = 0; i < this.shipLength; i++) {
@@ -228,9 +213,6 @@ var model = {
 
 		}
 		console.log(this.ships);
-
-
-
 
 		var locations;
 		for (var i = 0; i < this.numShips; i++) {
@@ -268,14 +250,10 @@ var model = {
 			} else {
 				newShipLocations.push((col + i) + '' + (row));
 
-
 			}
 
 		}
-
-
 		return newShipLocations;
-
 
 	},
 
@@ -296,14 +274,6 @@ var model = {
 
 
 	}
-
-
-
-
-
-
-
-
 
 
 };
