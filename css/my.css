@@ -26,10 +26,21 @@ div#board {
 	
 }
 div#messageArea{
+	display:inline-block;
 	position: absolute;
 	top: 0px;
 	left: 0px;
 	color: rgb(85, 175, 20);
+}
+
+#ReNew{
+	background-color: rgb(150, 200, 110);
+	border-color: rgb(85, 175, 20);
+	padding: 1.1em;
+	font-size: 1.1em;
+	position: absolute;
+	top: 38px;
+	right: 76px;
 }
 
 table{
@@ -59,6 +70,8 @@ form input{
 	border-color: rgb(85, 175, 20);
 	font-size: 1.1em;
 }
+
+
 
 .hit {
 	background:  url("../img/ship.png") no-repeat center center;
