@@ -351,28 +351,35 @@ function parceGuess(guess){// Проверяем правильность вво
 
 // ввОДИМ КООРДИНАТЫ МЫШКОЙ!
 var table = document.getElementById("tableID");
-if (table != null) {
-	for (var i = 0; i < table.rows.length; i++) {
-		for (var j = 0; j < table.rows[i].cells.length; j++)
-			table.rows[i].cells[j].onclick = function () {
-				tableText(this);
-			};
-		}
-	}
+
+table.onclick = function(event) {
+
+	let target = event.target;
+	model.fire(target.id);
+
+}
+// if (table != null) {
+// 	for (var i = 0; i < table.rows.length; i++) {
+// 		for (var j = 0; j < table.rows[i].cells.length; j++)
+// 			table.rows[i].cells[j].onclick = function () {
+// 				tableText(this);
+// 			};
+// 		}
+// 	}
 	
 
 
-	function tableText(guess) {
+	// function tableText(guess) {
 
-		model.fire(guess.id);
-		// console.log(guess);
+	// 	model.fire(guess.id);
+	// 	// console.log(guess);
 
-		return false;
-
-
+	// 	return false;
 
 
-	}
+
+
+	// }
 
 
 	function init(){
@@ -380,19 +387,18 @@ if (table != null) {
 
 		// Поработаем с Enter
 		var guessInput = document.getElementById('guessInput');
-		guessInput.onkeypress = handleKeyPress;
-
-
-
 		var fireButton = document.getElementById("fireButton");
+		guessInput.onkeypress = function(event){
+			if(event.keyCode === 13){
+				fireButton.click();
+					return false;
+				}
+		}
+		
 
 		fireButton.onclick = function(guess){
-			var text =document.getElementsByTagName("input")[0];
-			var guessfire = text.value;
-			controller.processGuesses(guessfire);
-			text.value = '';
-
-
+			controller.processGuesses(guessInput.value);
+			guessInput.value = '';
 
 		}
 
@@ -400,19 +406,6 @@ if (table != null) {
 
 
 	}
-
-	function handleKeyPress(e){
-		var fireButton =document.getElementById('fireButton');
-		if(e.keyCode === 13){
-			fireButton.click();
-			return false;
-		}
-
-
-	}
-
-
-
 
 	window.onload =init;
 
