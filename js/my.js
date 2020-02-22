@@ -187,11 +187,11 @@ var model = {
 		var altText = sup.getAttribute("disabled");
 		// console.log(altText);
 
-		if (altText !== 'disabled'){
+		if (altText !== 'miss'){
 
 			view.displayMiss(guess);
 			view.displayMessage('Вы не попали!');
-			sup.setAttribute('disabled', 'disabled');
+			sup.setAttribute('disabled', 'miss');
 			this.guesses++;
 
 
@@ -224,7 +224,7 @@ var model = {
 			this.ships[i] = {locations: ['', '', ''], hits: ['', '', ''] }
 
 		}
-		console.log(this.ships);
+		
 
 
 		
@@ -238,7 +238,7 @@ var model = {
 
 
 		}	
-		console.log(this.ships);
+		
 
 	},
 	// Метод создает корабль
@@ -293,14 +293,6 @@ var model = {
 
 
 	}
-
-
-
-	
-
-
-
-
 
 
 };
