@@ -178,7 +178,7 @@ var model = {
 
 			view.displayMiss(guess);
 			view.displayMessage('Вы не попали!');
-			sup.setAttribute('disabled', 'disabled');
+			sup.setAttribute('disabled', 'miss');
 			this.guesses++;
 
 
@@ -212,7 +212,7 @@ var model = {
 			}
 
 		}
-		console.log(this.ships);
+		
 
 		var locations;
 		for (var i = 0; i < this.numShips; i++) {
@@ -324,47 +324,56 @@ function parceGuess(guess) { // Проверяем правильность вв
 
 // ввОДИМ КООРДИНАТЫ МЫШКОЙ!
 var table = document.getElementById("tableID");
-if (table != null) {
-	for (var i = 0; i < table.rows.length; i++) {
-		for (var j = 0; j < table.rows[i].cells.length; j++)
-			table.rows[i].cells[j].onclick = function () {
-				tableText(this);
-			};
-	}
+
+table.onclick = function(event) {
+
+	let target = event.target;
+	model.fire(target.id);
+
 }
+// if (table != null) {
+// 	for (var i = 0; i < table.rows.length; i++) {
+// 		for (var j = 0; j < table.rows[i].cells.length; j++)
+// 			table.rows[i].cells[j].onclick = function () {
+// 				tableText(this);
+// 			};
+// 		}
+// 	}
+	
 
 
+	// function tableText(guess) {
 
-function tableText(guess) {
+	// 	model.fire(guess.id);
+	// 	// console.log(guess);
 
-	model.fire(guess.id);
-	// console.log(guess);
+	// 	return false;
 
 	return false;
 
 
 
+	// }
 
 }
 
 
 function init() {
 
+		// Поработаем с Enter
+		var guessInput = document.getElementById('guessInput');
+		var fireButton = document.getElementById("fireButton");
+		guessInput.onkeypress = function(event){
+			if(event.keyCode === 13){
+				fireButton.click();
+					return false;
+				}
+		}
+		
 
-	// Поработаем с Enter
-	var guessInput = document.getElementById('guessInput');
-	guessInput.onkeypress = handleKeyPress;
-
-
-
-	var fireButton = document.getElementById("fireButton");
-
-	fireButton.onclick = function (guess) {
-		var text = document.getElementsByTagName("input")[0];
-		var guessfire = text.value;
-		controller.processGuesses(guessfire);
-		text.value = '';
-
+		fireButton.onclick = function(guess){
+			controller.processGuesses(guessInput.value);
+			guessInput.value = '';
 
 
 	}
@@ -381,22 +390,7 @@ function handleKeyPress(e) {
 		return false;
 	}
 
-
-}
-
-let reNew = document.getElementById('ReNew');
-
-reNew.addEventListener('click', {
-	handleEvent(event) {
-		location.reload(event);
-	}
-});
-
-
-
-
-
-window.onload = init;
+	window.onload =init;
 
 
 
