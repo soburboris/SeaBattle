@@ -212,7 +212,7 @@ var model = {
 			}
 
 		}
-		
+
 
 		var locations;
 		for (var i = 0; i < this.numShips; i++) {
@@ -325,7 +325,7 @@ function parceGuess(guess) { // Проверяем правильность вв
 // ввОДИМ КООРДИНАТЫ МЫШКОЙ!
 var table = document.getElementById("tableID");
 
-table.onclick = function(event) {
+table.onclick = function (event) {
 
 	let target = event.target;
 	model.fire(target.id);
@@ -339,46 +339,51 @@ table.onclick = function(event) {
 // 			};
 // 		}
 // 	}
-	
-
-
-	// function tableText(guess) {
-
-	// 	model.fire(guess.id);
-	// 	// console.log(guess);
-
-	// 	return false;
-
-	return false;
 
 
 
-	// }
+// function tableText(guess) {
 
-}
+// 	model.fire(guess.id);
+// 	// console.log(guess);
+
+// 	return false;
+
+// 	return false;
+
+
+
+// 	}
+
+// }
 
 
 function init() {
 
-		// Поработаем с Enter
-		var guessInput = document.getElementById('guessInput');
-		var fireButton = document.getElementById("fireButton");
-		guessInput.onkeypress = function(event){
-			if(event.keyCode === 13){
-				fireButton.click();
-					return false;
-				}
+	// Поработаем с Enter
+	var guessInput = document.getElementById('guessInput');
+	var fireButton = document.getElementById("fireButton");
+	guessInput.onkeypress = function (event) {
+		if (event.keyCode === 13) {
+			fireButton.click();
+			return false;
 		}
-		
+	}
 
-		fireButton.onclick = function(guess){
-			controller.processGuesses(guessInput.value);
-			guessInput.value = '';
+
+	fireButton.onclick = function (guess) {
+		controller.processGuesses(guessInput.value);
+		guessInput.value = '';
 
 
 	}
 
 	model.generateShipLocations();
+
+	let renew = document.getElementById('ReNew');
+	renew.addEventListener('click', function() {
+		window.location.reload();
+	})
 
 
 }
@@ -390,69 +395,5 @@ function handleKeyPress(e) {
 		return false;
 	}
 
-	window.onload =init;
-
-
-
-
-
-
-
-
-
-// parceGuess('DD');
-
-// fireButton.onclick = function(){
-// var text =document.getElementsByTagName("input")[0];
-// var guess = text.value;
-// controller.processGuesses(guess);
-
-
-// controller.processGuesses('A0');
-// model.fire('10');
-// model.fire('20');
-// model.fire('30');
-// model.fire('63');
-// model.fire('64');
-// model.fire('65');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function init(){
-
-
-// 	fireButton.onclick = function(){
-
-
-// 		var text =document.getElementsByTagName("input")[0];
-// 		var num = text.value;
-
-// 		num ="";
-// 		console.log(num);
-
-
-// 	}
-
-
-// }	
-// window.onload =init;
+}
+window.onload = init;
