@@ -144,7 +144,7 @@ var model = {
 
 						setTimeout(function () {
 							var tor = confirm('Поздравляю с победой!!! Ура! Еще будем играть?');
-
+							
 							if (tor) {
 								window.location.reload(tor);
 
