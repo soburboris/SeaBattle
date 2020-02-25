@@ -95,17 +95,6 @@ var model = {
 					var column3 = document.getElementById(ship.locations[2]).id.charAt(1);
 
 
-					// console.log(+row1);
-					// console.log(+column1);
-
-
-					// console.log(+row2);
-					// console.log(+column2);
-
-
-					// console.log(+row3);
-					// console.log(+column3);
-
 					if (row1 == row2 && row1 == row3 && row2 == row3) {
 						document.getElementById(ship.locations[0]).colSpan = "3";
 						document.getElementById(ship.locations[1]).style.display = "none";
@@ -126,10 +115,6 @@ var model = {
 					// var row = alphabet.indexOf(firstChar);
 					// var column =guess.charAt(1);
 
-
-
-
-					// console.log(altText);
 					document.getElementById(ship.locations[0]).style.boxShadow = "10px 10px 70px red";
 					document.getElementById(ship.locations[1]).style.boxShadow = "10px 10px 70px red";
 					document.getElementById(ship.locations[2]).style.boxShadow = "10px 10px 70px red";
@@ -180,8 +165,7 @@ var model = {
 			view.displayMessage('Вы не попали!');
 			sup.setAttribute('disabled', 'miss');
 			this.guesses++;
-
-
+			
 		} else {
 
 
