@@ -68,16 +68,7 @@ var model = {
 				view.displayHit(guess);
 				view.displayMessage('Попали!!');
 				this.guesses++;
-
-				// document.getElementById(ship.locations[index]).style.border-collapse= "collapse";
-
-
-
 				ship.hits[index] = 'hit';
-
-				// console.log(model.guesses);
-				// console.log(ship.locations[0]);
-
 
 
 				if (this.isSunk(ship)) {
@@ -105,11 +96,7 @@ var model = {
 						document.getElementById(ship.locations[2]).style.display = "none";
 
 
-					} else {
-
-
-					}
-
+					} 
 
 					// var firstChar = guess.charAt(0);// извлекаем из строки первый символ
 					// var row = alphabet.indexOf(firstChar);
@@ -177,7 +164,7 @@ var model = {
 
 	isSunk: function (ship) { // Проверяем, потоплены ли все палубы
 
-		for (var i = 0; i < this.shipLength; i++) {
+		for (let i = 0; i < this.shipLength; i++) {
 			if (ship.hits[i] !== 'hit') {
 				return false;
 			}
@@ -188,18 +175,18 @@ var model = {
 	//Генерация кораблей на игровом поле
 
 	generateShipLocations: function () {
-		for (i = 0; i < this.numShips; i++) { // Создаем массив
+		for (let i = 0; i < this.numShips; i++) { // Создаем массив
 
 			this.ships[i] = {
-				locations: ['', '', ''],
-				hits: ['', '', '']
+				locations: [''],
+				hits: ['']
 			}
 
 		}
 
 
 		var locations;
-		for (var i = 0; i < this.numShips; i++) {
+		for (let i = 0; i < this.numShips; i++) {
 			do {
 				locations = this.generateShip();
 			} while (this.collision(locations));
@@ -226,7 +213,7 @@ var model = {
 		}
 
 		var newShipLocations = [];
-		for (i = 0; i < this.shipLength; i++) {
+		for (let i = 0; i < this.shipLength; i++) {
 
 			if (direction == 1) {
 				newShipLocations.push(row + '' + (col + i));
@@ -245,9 +232,9 @@ var model = {
 
 
 	collision: function (locations) {
-		for (var i = 0; i < this.numShips; i++) {
+		for (let i = 0; i < this.numShips; i++) {
 			var ship = this.ships[i];
-			for (var j = 0; j < locations.length; j++) {
+			for (let j = 0; j < locations.length; j++) {
 				if (ship.locations.indexOf(locations[j]) >= 0) {
 					console.log(ship.locations.indexOf(locations));
 					return true;
@@ -345,8 +332,8 @@ table.onclick = function (event) {
 function init() {
 
 	// Поработаем с Enter
-	var guessInput = document.getElementById('guessInput');
-	var fireButton = document.getElementById("fireButton");
+	let guessInput = document.getElementById('guessInput');
+	let fireButton = document.getElementById("fireButton");
 	guessInput.onkeypress = function (event) {
 		if (event.keyCode === 13) {
 			fireButton.click();
